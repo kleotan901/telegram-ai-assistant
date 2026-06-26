@@ -1,0 +1,24 @@
+# Web framework
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+
+# Telegram bot
+aiogram==3.13.1
+
+# Database
+sqlalchemy==2.0.36
+asyncpg==0.30.0
+alembic==1.13.3
+
+# Settings & validation
+pydantic==2.9.2
+pydantic-settings==2.5.2
+
+# HTTP client (для AI API)
+httpx==0.27.2
+
+# Scheduler
+apscheduler==3.10.4
+
+# Utilities
+python-dotenv==1.0.1
