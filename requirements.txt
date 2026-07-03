@@ -9,6 +9,7 @@ aiogram==3.13.1
 sqlalchemy==2.0.36
 asyncpg==0.30.0
 alembic==1.13.3
+psycopg2-binary==2.9.10
 
 # Settings & validation
 pydantic==2.9.2
