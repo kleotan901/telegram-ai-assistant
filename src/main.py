@@ -8,6 +8,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from src.core.config import settings
 from src.routers import analytics_router, webhook_router
 
+from src.core.ai_client import ai_client, AIClient
+
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s | %(levelname)-8s | %(name)s | %(message)s",
@@ -90,6 +92,11 @@ async def lifespan(app: FastAPI):
 
     await bot.session.close()
     logger.info("Bot session closed")
+
+    # Закриваємо AI клієнт (звільняємо HTTP з'єднання)
+    if isinstance(ai_client, AIClient):
+        await ai_client.close()
+        logger.info("AI client closed")
 
 
 # ── FastAPI app ────────────────────────────────────────────────

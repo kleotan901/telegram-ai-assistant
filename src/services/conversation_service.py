@@ -12,6 +12,7 @@ from src.repositories import (
     MessageRepository,
 )
 from src.schemas.conversation import AIResponse, HandleMessageResult
+from src.core.ai_client import AIClientProtocol
 
 logger = logging.getLogger(__name__)
 
@@ -40,7 +41,7 @@ class ConversationService:
     def __init__(
         self,
         session: AsyncSession,
-        ai_client,          # AIClient — додамо на Етапі 10
+        ai_client: AIClientProtocol,
         tenant_id: uuid.UUID,
     ) -> None:
         self.session = session
@@ -113,7 +114,7 @@ class ConversationService:
             return HandleMessageResult(
                 response_text="",           # handler не відправить нічого
                 mode=ConversationMode.HUMAN,
-                need_human=True,
+                need_human=False,
                 conversation_id=conversation.id,
                 user_id=user.id,
             )
